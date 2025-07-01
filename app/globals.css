@@ -144,6 +144,8 @@ body {
   padding: 15px;
   border-bottom: 1px solid #eee;
   transition: background-color 0.2s;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .todo-item:hover {
@@ -190,6 +192,8 @@ body {
   display: flex;
   gap: 8px;
   align-items: center;
+  flex-shrink: 0;
+  min-width: 100px;
 }
 
 .todo-edit {
@@ -239,12 +243,16 @@ body {
 
 .todo-edit-input {
   flex: 1;
+  min-width: 0;
+  width: 100%;
+  max-width: calc(100% - 120px);
   padding: 8px;
   border: 2px solid #3498db;
   border-radius: 4px;
   font-size: 16px;
   outline: none;
   margin-right: 10px;
+  box-sizing: border-box;
 }
 
 .todo-edit-input:focus {
@@ -275,6 +283,8 @@ body {
   display: flex;
   flex-direction: column;
   margin-right: 8px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .todo-timestamp {
@@ -377,4 +387,28 @@ body {
 
 .modal-delete:hover {
   background-color: #c0392b;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+  .todo-item {
+    padding: 10px;
+  }
+  
+  .todo-edit-input {
+    max-width: calc(100% - 80px);
+    font-size: 14px;
+  }
+  
+  .todo-actions {
+    min-width: 80px;
+  }
+  
+  .todo-edit,
+  .todo-save,
+  .todo-cancel,
+  .todo-delete {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
 }
